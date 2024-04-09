@@ -1,0 +1,36 @@
+------------------ REPOSITORY:
+- This is a RIGID contract to follow for a particular feature.
+- here, we declare the blue_prints of FUNCTIONS which will laber be CALLED by usecases.
+- By doing so, we will be very strict to follow the contract--we should have same return_type & same params_type.
+- This way, there will be no room for errors.
+
+
+
+
+------------------ USECASES:
+
+- usecases DEPEND on repository (Auth_Repo), so, it needs the _repo_instance to call each function.
+- usecases are there ONLY_TO_CCCAAALLL those functions of it's Repo. (Auth_Repo)
+- Every usecase is responsible for ONLY-1 functionality execution which facilitates Single_Resposibility_Principle(S)
+- This way, every function is independent from another.
+- every usecase 💯 follows the same blue_print of REPOSITORY. (tho, it just calls the function, it MUST have the same fun skeleton as that of its REPO)
+
+
+
+
+------------------ REMOTE DATA SOURCES:
+
+- here, we DONOT return Either<Failure, Data> but, we directly THROW the error.
+- then, this error is further catched in Repositoy Layer!
+
+- we reference the USER_MODEL instead of USER in Data layer.
+- in DOMAIN & PRESENTATION layers, we always always alwaaaays reference USER instead of USER_MODEL
+
+
+
+
+------------------ DEPENDENCY INJECTION
+
+- Here, whenever there is a dependency of one over the other, i.e. when one is dependent over the other, we should never try to PASS them through the constructors. 
+- We take the help of get_it to INJECT them over! and we access them whenever & wherever needed! This will be automatically handled by get_it.
+- Get_it finds the exact needed instance for you.
